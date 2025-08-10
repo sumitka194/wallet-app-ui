@@ -1,5 +1,5 @@
 const config = {
-  walletBaseUri: 'http://localhost:9999',
+  walletBaseUri: import.meta.env.VITE_API_URL || 'http://localhost:9999',
 };
 
 export default config;
