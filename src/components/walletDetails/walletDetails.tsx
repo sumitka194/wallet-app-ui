@@ -1,9 +1,13 @@
-const WalletDetails = (props) => {
-  const { balance, name } = props;
+import { NavLink } from 'react-router-dom'
+
+const WalletDetails = (props: { balance: number; name: string; walletId: string }) => {
+  const { balance, name, walletId } = props;
   return (
     <div className="card" style={{ marginBottom: '2rem' }}>
       <div className="card-header">
-        Wallet Details
+        <NavLink to={`/transactions/${walletId}`} className="nav-link" activeClassName="active">
+          Wallet Details
+        </NavLink>
       </div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item">

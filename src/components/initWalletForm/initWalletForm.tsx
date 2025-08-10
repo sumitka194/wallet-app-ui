@@ -3,7 +3,7 @@ import { Input } from '../input';
 import { Button } from '../button';
 import './walletForm.style.css';
 
-const WalletForm = (props) => {
+const WalletForm = (props: { initWallet: (name: string, balance: number) => void }) => {
   const [walletName, setWalletName] = useState('');
   const [balance, setBalance] = useState('');
   const { initWallet } = props;
@@ -20,13 +20,13 @@ const WalletForm = (props) => {
               <div className="mb-3">
                 <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Wallet Name</label>
                 <div className="col-sm-10">
-                  <Input name='walletName' placeholder='Wallet Name' value={walletName} onChange={(name, value) => setWalletName(value)} />
+                  <Input name='walletName' placeholder='Wallet Name' value={walletName} onChange={(_: string, value: string) => setWalletName(value)} />
                 </div>
               </div>
               <div className="mb-3">
                 <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Initial Balance</label>
                 <div className="col-sm-10">
-                <Input name='balance' placeholder='Balance' value={balance} onChange={(name, value) => setBalance(value)} />
+                <Input name='balance' placeholder='Balance' value={balance} onChange={(_: string, value: string) => setBalance(value)} />
                 </div>
               </div>
               <Button name='Create Wallet' onSubmit={onSubmit} />

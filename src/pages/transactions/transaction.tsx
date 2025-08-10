@@ -3,15 +3,15 @@ import { useEffect, useState } from 'react';
 
 import { TransactionsTable } from '../../components/transactionsTable';
 
-import { getTransactions } from '../../utils/request';
+import { getTransactions, type GetTransactionsResponse } from '../../utils/request';
 
 const Transactions = () => {
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState<GetTransactionsResponse[]>([]);
   const [page, setPage] = useState(0);
-  const [sort, setSort] = useState({});
-  const { walletId } = useParams();
+  const [sort, setSort] = useState<{ by: string; order: 'asc' | 'desc' }>({ by: '', order: 'asc' });
+  const { walletId } = useParams<{ walletId: string }>();
 
-  const sortData = (field) => {
+  const sortData = (field: string) => {
     const { by, order } = sort;
     if (by === field) {
       const newOrder = order === 'asc' ? 'desc' : 'asc';

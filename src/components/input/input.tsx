@@ -1,4 +1,12 @@
-const Input = (props) => {
+type InputProps = {
+  onChange: (name: string, value: string) => void;
+  type?: 'text' | 'email' | 'password' | 'number';
+  placeholder?: string;
+  value: string;
+  name: string;
+}
+
+const Input = (props: InputProps) => {
   const {
     onChange,
     type = 'text',

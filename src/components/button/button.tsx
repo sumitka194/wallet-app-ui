@@ -1,4 +1,4 @@
-const Button = (props) => {
+const Button = (props: { name: string; onSubmit: () => void }) => {
   const { name, onSubmit } = props;
   return (
     <button

@@ -5,11 +5,15 @@ import './index.css';
 import App from './App';
 
 const container = document.getElementById('root');
-const root = createRoot(container);
-root.render(
-  <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
-  </React.StrictMode>
-);
+if (container) {
+  const root = createRoot(container);
+  root.render(
+    <React.StrictMode>
+      <Router>
+        <App />
+      </Router>
+    </React.StrictMode>
+  );
+} else {
+  throw new Error("Root container not found");
+}
