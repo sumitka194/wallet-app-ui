@@ -1,5 +1,5 @@
 const config = {
-  walletBaseUri: process.env.REACT_APP_WALLET_API,
+  walletBaseUri: 'http://localhost:9999',
 };
 
 export default config;

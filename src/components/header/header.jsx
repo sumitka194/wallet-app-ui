@@ -1,13 +1,7 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { useLocation, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
-  const { pathname } = useLocation();
-  const history = useHistory();
-  const goToTransaction = () => {
-    const walletId = localStorage.getItem('walletId');
-    history.push(`/transactions/${walletId}`);
-  }
+  const walletId = localStorage.getItem('walletId');
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid max-content-width">
@@ -18,10 +12,11 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a style={{ cursor: 'pointer' }} className={`nav-link ${pathname === '/' ? 'active' : ''}`} onClick={() => history.push('/')}>Home</a>
+
+              <NavLink exact to="/" className="nav-link" activeClassName="active">Home</NavLink>
             </li>
             <li className="nav-item">
-              <a style={{ cursor: 'pointer' }} className={`nav-link ${pathname === '/transactions' ? 'active' : ''}`} onClick={goToTransaction}>Transactions</a>
+              <NavLink to={`/transactions/${walletId}`} className="nav-link" activeClassName="active">Transactions</NavLink>
             </li>
           </ul>
         </div>
